@@ -1,5 +1,7 @@
+
 .App {
   text-align: center;
+  background-color: steelblue;
 }
 
 .App-header {
@@ -13,3 +15,9 @@
   font-size: 1.5em;
 }
 
+.App-footer {
+  background-color: #222;
+  padding: 1em;
+  color: white;
+  margin-bottom: 1em;
+}

@@ -25,9 +25,9 @@ function App() {
         <header className="App-header">
           <h1 className="App-title">Gallery of My Life</h1>
         </header>
-        <p>Gallery goes here</p>
-        <GalleryList list={galleryList} getGalleryList={getGalleryList}/>
-      </div>
+        <GalleryList className="gallery-list" list={galleryList} getGalleryList={getGalleryList}/>
+        <footer className="App-footer"><p>More adventures to coming soon...</p></footer>      
+        </div>
     );
 }
 

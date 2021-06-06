@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import './GalleryItem.css';
 
 function GalleryItem({item, getGalleryList}) {
 
@@ -14,41 +15,26 @@ function GalleryItem({item, getGalleryList}) {
             console.log('in like put -->', response);
             getGalleryList();
         })
-    }//end handleDescription
-
-    // const handleDescription = () => {
-    //     console.log(item);
-
-    //     const data = {
-    //         isShowing: !item.isShowing
-    //     }
-
-    //     //PUT request to server
-    //     axios.put(`/list/${item.id}`, data).then(response => {
-    //         console.log(response);
-    //         //trigger the GET from props
-    //         getGalleryList();
-    //     }).catch(error => {
-    //         console.log(error);
-    //     })
-    // }//end handleDescription
+    }//end handleLike
 
     return (
-        <div className="GalleryItem">
+        <div>
             { picShowing ? (
-                <div>
-                    <img src={item.path}></img>
-                     <button onClick={handleLike}>Like</button>
+                <div className="photoShowingDiv">
+                    <img src={item.path} className="image"></img>
                     <p>{item.likes}: likes</p>
+                    <button onClick={handleLike} className="likeBtn">Like</button>
+                    
+                    <button onClick={() => setPicShowing(!picShowing)}>{picShowing ? 'Description' : 'Picture'}</button>
+
                 </div>
             ) : (
-                <div>
+                <div className="descriptionDiv">
                 <p>{item.description}</p>
                 {item.isShowing && <p>show picture</p>}
+                <button className="picBtn" onClick={() => setPicShowing(!picShowing)}>{picShowing ? 'Description' : 'Show Picture'}</button>
                </div>
             )}
-
-            <button onClick={() => setPicShowing(!picShowing)}>{picShowing ? 'Description' : 'Picture'}</button>
         </div>
     )
 }//end GalleryItem
