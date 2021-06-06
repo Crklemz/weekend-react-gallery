@@ -6,29 +6,39 @@ function GalleryItem({item, getGalleryList}) {
     //picShowing is used for toggling the picture to show the description or picture
     const [picShowing, setPicShowing] = useState(true);
 
-    const handleDescription = () => {
+    const handleLike = () => {
         console.log(item);
 
-        const data = {
-            isShowing: !item.isShowing
-        }
-
         //PUT request to server
-        axios.put(`/list/${item.id}`, data).then(response => {
-            console.log(response);
-            //trigger the GET from props
+        axios.put(`/gallery/like/${item.id}`).then(response => {
+            console.log('in like put -->', response);
             getGalleryList();
-        }).catch(error => {
-            console.log(error);
         })
     }//end handleDescription
+
+    // const handleDescription = () => {
+    //     console.log(item);
+
+    //     const data = {
+    //         isShowing: !item.isShowing
+    //     }
+
+    //     //PUT request to server
+    //     axios.put(`/list/${item.id}`, data).then(response => {
+    //         console.log(response);
+    //         //trigger the GET from props
+    //         getGalleryList();
+    //     }).catch(error => {
+    //         console.log(error);
+    //     })
+    // }//end handleDescription
 
     return (
         <div className="GalleryItem">
             { picShowing ? (
                 <div>
                     <img src={item.path}></img>
-                     
+                     <button onClick={handleLike}>Like</button>
                     <p>{item.likes}: likes</p>
                 </div>
             ) : (
