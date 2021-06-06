@@ -27,11 +27,14 @@ function GalleryItem({item, getGalleryList}) {
         <div className="GalleryItem">
             { picShowing ? (
                 <div>
-                    Show Description
+                    <img src={item.path}></img>
+                     
+                    <p>{item.likes}: likes</p>
                 </div>
             ) : (
                 <div>
-                {item.isShowing && <p>show piscture</p>} 
+                <p>{item.description}</p>
+                {item.isShowing && <p>show picture</p>}
                </div>
             )}
 
